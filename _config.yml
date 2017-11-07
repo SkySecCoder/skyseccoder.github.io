@@ -1,0 +1,36 @@
+# site settings
+title: Aakash Prasad
+subtitle: Website
+email: prasad.aakash@gmail.com
+description: Hello my name is Aakash Prasad<br /> and this is my website.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site
+author:
+street_address: 360 Huntington Ave
+city: Boston
+state: MA
+zip_code: 02115
+country: United States of America
+phone: (781) 708-6994
+
+# homepage tiles
+tiles-source: posts # accepts "posts" or "pages"
+tiles-count: 6
+
+# social settings
+500px_url:
+facebook_url:
+github_url:
+gitlab_url: https://gitlab.com/u/andrewbanchich
+googleplus_url: https://plus.google.com/u/0/+AndrewBanchich
+instagram_url: https://instagram.com
+linkedin_url: https://www.linkedin.com/in/andrew-banchich-a4ba1195
+pinterest_url:
+slack_url:
+twitter_url: https://twitter.com/andrewbanchich
+
+# build settings
+markdown: kramdown
+
+sass:
+  style: compressed

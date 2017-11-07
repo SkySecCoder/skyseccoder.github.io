@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+{% include head.html %}
+<style>
+img {
+  border-radius: 50%;
+}
+</style>
+
+<body>
+
+    {% include header.html %}
+
+    <!-- Banner -->
+    <section id="banner" class="major">
+        <div class="inner">
+            <header class="major">
+                <img src="https://scontent.fbos1-2.fna.fbcdn.net/v/t31.0-8/10317709_640844179384392_171338964060278726_o.jpg?oh=94293d5622b6fa4c4235b4c88d895b23&oe=5A9F9648" alt="Aakash Prasad" style="width:150px">
+                <h1>{{ page.landing-title }}</h1>
+            </header>
+            <div class="content">
+                <!--p style="text-transform: uppercase;">{{ site.description }}</p-->
+                <ul class="actions">
+                    <li><p style="text-transform: uppercase;">{{ site.description }}</p></li>
+                    <li><a href="#one" class="button next scrolly">Get Started</a></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- One -->
+        {% include tiles.html %}
+
+        <!-- Two -->
+        <section id="two">
+            <div class="inner">
+                <header class="major">
+                    <h2>About</h2>
+                </header>
+                <p>{{ content }}</p>
+                <ul class="actions">
+                    <li><a href="landing.html" class="button next">Get Started</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    {% include footer.html %}
+
+</body>
+
+</html>
