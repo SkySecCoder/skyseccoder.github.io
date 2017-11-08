@@ -11,7 +11,7 @@ city: Boston
 state: MA
 zip_code: 02115
 country: United States of America
-phone: (781) 708-6994
+phone: 
 
 # homepage tiles
 tiles-source: posts # accepts "posts" or "pages"
