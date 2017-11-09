@@ -12,7 +12,7 @@
 <!-- Menu -->
 <nav id="menu">
 	<ul class="links">
-        <!--{% for page in site.pages %}
+        {% for page in site.pages %}
 		    {% if page.layout == "home" %}
 		        <li><a href="{{ "" | absolute_url }}/">{{ page.title }}</a></li>
 	    	{% endif %}
@@ -21,11 +21,12 @@
 		    {% if page.layout != "home" and page.nav-menu == true %}
 		        <li><a href="{{ page.url | absolute_url }}">{{ page.title }}</a></li>
 		    {% endif %}
-		{% endfor %}-->
-		<li><a href="http://localhost:4000/index.html">Home</a></li>
+		{% endfor %}
+		<!--li><a href="http://localhost:4000/index.html">Home</a></li>
 		<li><a href="http://localhost:4000/landing.html">About me</a></li>
-		<li><a href="http://localhost:4000/all_posts.html">All posts</a></li>
-		<li><a href="http://localhost:4000/assets/docs/Resume.pdf">Resume</a></li>
+		<li><a href="{{ page.url }}all_posts.html">All posts</a></li>
+		<li><a href="http://localhost:4000/assets/docs/Resume.pdf">Resume</a></li-->
+		<li><a href="http://skyseccoder.github.io/assets/docs/Resume.pdf">Resume</a></li>
 	</ul>
 	<ul class="actions vertical">
 		<li><a href="#contact" class="button special fit">Contact me</a></li>
