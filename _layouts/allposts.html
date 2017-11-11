@@ -9,25 +9,62 @@
 {% include head.html %}
 
 <body>
-
+    <!--Adding new banner-->
     {% include header.html %} 
-    
-    
+    <section id="banner" class="style2">
+            <div class="inner">
+                <span class="image">
+                    <img src="{{ site.baseurl }}/{{ page.image }}" alt="">
+                </span>
+                <header class="major">
+
+                    <h1>{{ page.title }}</h1>
+
+                </header>
+                <div class="content">
+
+                    {{ page.description }}
+
+                </div>
+            </div>
+        </section>
+        <br/><br/><br/>
+    <!--Adding new banner-->
 <!-- Main -->
 <div id="main" class="alt">
 
 <!-- One -->
 <section id="one">
-	<div class="inner">
+	<!--<div class="inner">
                 {% for post in site.posts %}
 		<header class="major">
-			<h1>{{ post.title }}</h1>
+			<h2>{{ post.title }}</h2> 
 		</header>
 		{% if post.image %}<span class="image main"><img src="{{ site.baseurl }}/{{ post.image }}" alt="" /></span>{% endif %}
 		{% if post.date %}<p>{{ post.date }}</p>{% endif %}
 		<p>{{ post.content }}</p>
                 {% endfor %}
-	</div>
+	</div>-->
+	<!--Mine-->
+	<div class="table-wrapper">
+	<table class="alt">
+		<thead>
+			<tr>
+				<th>Description</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for post in site.posts %}
+			<tr>
+				<td >{{ post.title }}</td>
+				{% if post.date %}<td>{{ post.date }}</td>{% else %}<td> - </td>{% endif %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+<!--Mine-->
 </section>
 
 </div>
