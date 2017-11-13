@@ -22,12 +22,12 @@ tiles-count: 6
 facebook_url:
 github_url: https://github.com/SkySecCoder
 gitlab_url:  
-googleplus_url: https://plus.google.com/u/0/103587174461117095018
-instagram_url: https://instagram.com
+googleplus_url: 
+instagram_url: 
 linkedin_url: https://www.linkedin.com/in/aakash-prasad-590761a4/
 pinterest_url:
 slack_url:
-twitter_url: https://twitter.com/prasadaakash1
+twitter_url: 
 
 # build settings
 markdown: kramdown
