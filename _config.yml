@@ -2,7 +2,7 @@
 title: Aakash Prasad
 subtitle: Cybersecurity
 email: prasad.aakash@gmail.com
-description: Hello my name is Aakash Prasad<br /> and this is my website.
+description: "Hello my name is Aakash Prasad.<br />To know more about me, click here."
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
 author:

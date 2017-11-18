@@ -59,7 +59,7 @@
 		
 		<!--li><a href="http://localhost:4000/index.html">Home</a></li>
 		<li><a href="http://localhost:4000/landing.html">About me</a></li>
-		<li><a href="/2016/08/20/etiam.htmlall_posts.html">All posts</a></li>
+		<li><a href="/2017/09/11/ipsum.htmlall_posts.html">All posts</a></li>
 		<li><a href="http://localhost:4000/assets/docs/Resume.pdf">Resume</a></li-->
 		<li><a href="http://skyseccoder.github.io/assets/docs/Resume.pdf">Resume</a></li>
 	</ul>
@@ -78,24 +78,41 @@
 <section id="one">
 	<div class="inner">
 		<header class="major">
-			<h1>Etiam</h1>
+			<h1>Architectures for deploying firewalls that are most commonly used in businesses</h1>
 		</header>
-		<span class="image main"><img src="/assets/images/pic06.jpg" alt="" /></span>
-		<p><p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
-Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. 
-Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. 
-Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
+		<span class="image main"><img src="/assets/images/pic04.jpg" alt="" /></span>
+		<p><p>Let us first define Firewalls before we discuss an architecture for deploying a firewall in a company. A firewall [1] is a hardware or software system that prevents unauthorised access to or from a network. Firewalls are an important part of businesses in today’s day and age, where corporate espionage and cyber attacks are as common as air.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. 
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. 
-Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. 
-Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. 
-Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+<p>There is no universal architecture a company can use. While selecting a firewall the company has to keep the following factors in mind: [2]</p>
 
-<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
-Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. 
-Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+<p>Is the firewall giving the desired security level
+Is the firewall scalable depending on the company’s needs
+Is the firewall cost effective
+Does the firewall provide support for the size of the organisation
+There are several different types of architectures that a company can choose from but the three main architectures that are used commercially are: [3]</p>
+
+<p>Bastion host
+Screened subnet
+Dual firewall with DMZ
+In a bastion host [3] the firewall is placed between the internet and the protected network. The bastion is the cheapest amongst the mentioned topology and is perfect for relatively simple networks, although once the firewall is bypassed the user will have unrestricted access to the protected network. This topology is suited for small growing business but would not be a good option for a big company.</p>
+
+<p>The screened subnet topology [3] offers additional advantages over the bastion host approach as it uses a single firewall with three networks connected to it (the internet, intranet and a DMZ). The host public services are placed in the Demilitarised Zone (DMZ), which is separated from both the internet and the trusted network by the firewall, therefore if a malicious user does manage to bypass the firewall, they will not have access to the intranet. This architecture allows a company to offer services to the internet users while still maintaining security, it is a good architecture for an e-commerce company as it allows them to securely yet efficiently divide their networks.</p>
+
+<p>The most secure and the most expensive option is to implement a screened subnet [3] using 2 firewalls. In this case the DMZ is placed between 2 firewalls which provides an added layer of security. This still allows the company to offer services to the internet users and at the same time protects the company if a malicious user discovers a software-specific exploitable vulnerability. Just incase the malicious user gets past the first firewall due to an exploit the inspection at the second firewall will block the user from entering the secured network.</p>
+
+<p>In computer networks, a DMZ(demilitarised zone) [4] is a physical or logical sub-network that separates an internal local area network from other untrusted networks. Servers for clients, resources and services are located in the DMZ so that users on the internet can use them but the rest of the network (LAN) remains unreachable from the internet.</p>
+
+<p>Hence in conclusion there is no universal topology that all company use and a company should choose a topology that is best suited for their need.</p>
+
+<h3>References</h3>
+
+<p>[1] http://searchnetworking.techtarget.com/tutorial/Introduction-to-firewalls-Types-of-firewalls</p>
+
+<p>[2] http://www.netsentron.com/forum/how-to-choose-a-firewall/</p>
+
+<p>[3] http://searchsecurity.techtarget.com/tip/Choosing-the-right-firewall-topology-Bastion-host-screened-subnet-or-dual-firewalls</p>
+
+<p>[4] http://searchsecurity.techtarget.com/definition/DMZ</p>
 </p>
 	</div>
 </section>
@@ -172,14 +189,10 @@ Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
 		<div class="inner">
 			<ul class="icons">
 				
-				<li><a href="https://twitter.com/prasadaakash1" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
-				
-				
-				<li><a href="https://plus.google.com/u/0/103587174461117095018" class="icon alt fa-google-plus" target="_blank"><span class="label">Google+</span></a></li>
 				
 				
 				
-				<li><a href="https://instagram.com" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+				<li><a href="https://www.instagram.com/aakash_bazinga/" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
 				
 				
 				
