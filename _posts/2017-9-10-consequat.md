@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Has to be editted
+title: Under Construction
 description: General security
-image: assets/images/pic05.jpg
+image: assets/images/underconstruction.jpg
 ---
 
 Donec ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
