@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="/assets/css/main.css" />
 	<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
 	<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+	<link rel="icon" type="image/png" href="https://scontent.fbos1-2.fna.fbcdn.net/v/t31.0-8/10317709_640844179384392_171338964060278726_o.jpg?oh=94293d5622b6fa4c4235b4c88d895b23&oe=5A9F9648"/>
 </head>
 
 
@@ -78,41 +79,40 @@
 <section id="one">
 	<div class="inner">
 		<header class="major">
-			<h1>Architectures for deploying firewalls that are most commonly used in businesses</h1>
+			<h1>IDS and IPS</h1>
 		</header>
 		<span class="image main"><img src="/assets/images/pic18.jpg" alt="" /></span>
-		<p><p>Let us first define Firewalls before we discuss an architecture for deploying a firewall in a company. A firewall [1] is a hardware or software system that prevents unauthorised access to or from a network. Firewalls are an important part of businesses in today’s day and age, where corporate espionage and cyber attacks are as common as air.</p>
+		<p><p>IDS or intrusion detection system[1] is a passive security solution which in essence just warns us if a suspicious activity has taken place and not actually prevent them. It monitors all inbound and outbound network traffic and identify any suspicious activity or patterns that may indicate a network or system attack from someone attempting to break into or compromise a system. An IDS specifically looks for suspicious activity and events that might be the result of a virus, worm or hacker. After detecting the anomaly the IDS responds in the following ways:</p>
 
-<p>There is no universal architecture a company can use. While selecting a firewall the company has to keep the following factors in mind: [2]</p>
+<ul>
+  <li>it can display an alert</li>
+  <li>log the event</li>
+  <li>
+    <p>page the administrator
+IPS or intrusion prevention system[1] is the next level of security technology with the capability to provide security at all system levels from the OS kernel to data packets. It is a more active security solution as it not only detects the attacks and reports them, like the IDS, but also attempts to stop them. It not only prevents known intrusion signatures but also the unknown attacks due to its database of generic attack behaviours. Currently there are two types of IPSs that are similar in nature to IDS:</p>
+  </li>
+  <li>host based intrusion prevention systems</li>
+  <li>
+    <p>network based intrusion prevention systems
+To improve on their current IDSs, vendors like CISCO, Alert Logic, Check point Software technologies and DeepNines [2] have modified their previous IDS product so that they provide additional functions for the user. They have tried to covert their IDSs to IPSs. An example is the CISCO Next- Generation Intrusion Prevention System (NGIPS) [3] . CISCO has added various features to their previous IDS to turn them into NGIPS, a few of these modifications include: [4]</p>
+  </li>
+  <li>Network awareness: provides a knowledge of the devices that exists on the network (OS, device types, etc.)</li>
+  <li>Application Awareness: provides the ability to pick out and highlight application that are being run on the network and the users running that are running them</li>
+  <li>Identity awareness: provides the ability to establish and monitor the baseline behaviour of the network devices</li>
+  <li>Real time automated response: ability to respond to events as they occur and react with the appropriate response based on policy</li>
+  <li>Automatic IPS tuning ability for a platform to dynamically tune itself based on the information gathered.
+In summary an IDS simply detects a suspicious activity on a network and reports them whereas an IPS also takes measures to prevent such suspicious behaviour. We have also discussed one of many vendors (CISCO) who have improved on their current IDSs to convert them into IPSs. Many mentioned vendors have added similar functions as the NGIPS in their current IDS products to turn them into IPSs.</li>
+</ul>
 
-<p>Is the firewall giving the desired security level
-Is the firewall scalable depending on the company’s needs
-Is the firewall cost effective
-Does the firewall provide support for the size of the organisation
-There are several different types of architectures that a company can choose from but the three main architectures that are used commercially are: [3]</p>
+<p>References</p>
 
-<p>Bastion host
-Screened subnet
-Dual firewall with DMZ
-In a bastion host [3] the firewall is placed between the internet and the protected network. The bastion is the cheapest amongst the mentioned topology and is perfect for relatively simple networks, although once the firewall is bypassed the user will have unrestricted access to the protected network. This topology is suited for small growing business but would not be a good option for a big company.</p>
+<p>[1] retrieved from http://www.webopedia.com/DidYouKnow/Computer_Science/intrusion_detection_prevention.asp</p>
 
-<p>The screened subnet topology [3] offers additional advantages over the bastion host approach as it uses a single firewall with three networks connected to it (the internet, intranet and a DMZ). The host public services are placed in the Demilitarised Zone (DMZ), which is separated from both the internet and the trusted network by the firewall, therefore if a malicious user does manage to bypass the firewall, they will not have access to the intranet. This architecture allows a company to offer services to the internet users while still maintaining security, it is a good architecture for an e-commerce company as it allows them to securely yet efficiently divide their networks.</p>
+<p>[2] retrieved from http://jafsec.com/Intrusion-Prevention/Intrusion-Prevention-Detection-A-B.html</p>
 
-<p>The most secure and the most expensive option is to implement a screened subnet [3] using 2 firewalls. In this case the DMZ is placed between 2 firewalls which provides an added layer of security. This still allows the company to offer services to the internet users and at the same time protects the company if a malicious user discovers a software-specific exploitable vulnerability. Just incase the malicious user gets past the first firewall due to an exploit the inspection at the second firewall will block the user from entering the secured network.</p>
+<p>[3] retrieved from http://www.cisco.com/c/en/us/products/security/ngips/index.html#~tab-learnmore</p>
 
-<p>In computer networks, a DMZ(demilitarised zone) [4] is a physical or logical sub-network that separates an internal local area network from other untrusted networks. Servers for clients, resources and services are located in the DMZ so that users on the internet can use them but the rest of the network (LAN) remains unreachable from the internet.</p>
-
-<p>Hence in conclusion there is no universal topology that all company use and a company should choose a topology that is best suited for their need.</p>
-
-<h3>References</h3>
-
-<p>[1] http://searchnetworking.techtarget.com/tutorial/Introduction-to-firewalls-Types-of-firewalls</p>
-
-<p>[2] http://www.netsentron.com/forum/how-to-choose-a-firewall/</p>
-
-<p>[3] http://searchsecurity.techtarget.com/tip/Choosing-the-right-firewall-topology-Bastion-host-screened-subnet-or-dual-firewalls</p>
-
-<p>[4] http://searchsecurity.techtarget.com/definition/DMZ</p>
+<p>[4] retrieved from http://www.tomsitpro.com/articles/intrusion-detection-intrusion-prevention-systems-ids-ips,2-959.html</p>
 </p>
 	</div>
 </section>
