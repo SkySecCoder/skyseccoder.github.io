@@ -13,6 +13,7 @@ There is no universal architecture a company can use. While selecting a firewall
 - Is the firewall scalable depending on the company’s needs
 - Is the firewall cost effective
 - Does the firewall provide support for the size of the organisation
+
 There are several different types of architectures that a company can choose from but the three main architectures that are used commercially are: [3]
 
 - Bastion host
