@@ -7,7 +7,7 @@ image: assets/images/pic19.jpg
 
 Let us first define Firewalls before we discuss an architecture for deploying a firewall in a company. A firewall [1] is a hardware or software system that prevents unauthorised access to or from a network. Firewalls are an important part of businesses in today’s day and age, where corporate espionage and cyber attacks are as common as air.
 
-There is no universal architecture a company can use. While selecting a firewall the company has to keep the following factors in mind: [2]
+<br  />There is no universal architecture a company can use. While selecting a firewall the company has to keep the following factors in mind: [2]
 
 - Is the firewall giving the desired security level
 - Is the firewall scalable depending on the company’s needs
