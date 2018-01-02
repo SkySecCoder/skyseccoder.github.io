@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Aakash Prasad</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+</head>
+
+
+<body>
+
+    <!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header -->
+<header id="header">
+	<a href="http://localhost:4000//" class="logo"><strong>Aakash Prasad</strong> <span>Cybersecurity</span></a>
+	<nav>
+		<a href="#menu">Menu</a>
+	</nav>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+	<ul class="links">
+        
+		    
+		
+		    
+		        <li><a href="http://localhost:4000//">Home</a></li>
+	    	
+		
+		    
+		
+		    
+		
+		
+		    
+		        <li><a href="http://localhost:4000/all_posts.html">All posts</a></li>
+		    
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/landing.html">About me</a></li>
+		    
+		
+		    
+		
+		<!--li><a href="http://localhost:4000/index.html">Home</a></li>
+		<li><a href="http://localhost:4000/landing.html">About me</a></li>
+		<li><a href="/2018/01/01/firewall.htmlall_posts.html">All posts</a></li>
+		<li><a href="http://localhost:4000/assets/docs/Resume.pdf">Resume</a></li-->
+		<li><a href="http://skyseccoder.github.io/assets/docs/Resume.pdf">Resume</a></li>
+	</ul>
+	<ul class="actions vertical">
+		<li><a href="#contact" class="button special fit">Contact me</a></li>
+		<!--li><a href="#" class="button fit">Log In</a></li-->
+	</ul>
+</nav>
+ 
+    
+    
+<!-- Main -->
+<div id="main" class="alt">
+
+<!-- One -->
+<section id="one">
+	<div class="inner">
+		<header class="major">
+			<h1>Architectures for deploying a firewall in a company</h1>
+		</header>
+		<span class="image main"><img src="/assets/images/pic19.jpg" alt="" /></span>
+		<p><p>Let us first define Firewalls before we discuss an architecture for deploying a firewall in a company. A firewall [1] is a hardware or software system that prevents unauthorised access to or from a network. Firewalls are an important part of businesses in today’s day and age, where corporate espionage and cyber attacks are as common as air.</p>
+
+<p>There is no universal architecture a company can use. While selecting a firewall the company has to keep the following factors in mind: [2]</p>
+
+<ul>
+  <li>Is the firewall giving the desired security level</li>
+  <li>Is the firewall scalable depending on the company’s needs</li>
+  <li>Is the firewall cost effective</li>
+  <li>
+    <p>Does the firewall provide support for the size of the organisation
+There are several different types of architectures that a company can choose from but the three main architectures that are used commercially are: [3]</p>
+  </li>
+  <li>Bastion host</li>
+  <li>Screened subnet</li>
+  <li>Dual firewall with DMZ
+In a bastion host [3] the firewall is placed between the internet and the protected network. The bastion is the cheapest amongst the mentioned topology and is perfect for relatively simple networks, although once the firewall is bypassed the user will have unrestricted access to the protected network. This topology is suited for small growing business but would not be a good option for a big company.</li>
+</ul>
+
+<p>The screened subnet topology [3] offers additional advantages over the bastion host approach as it uses a single firewall with three networks connected to it (the internet, intranet and a DMZ). The host public services are placed in the Demilitarised Zone (DMZ), which is separated from both the internet and the trusted network by the firewall, therefore if a malicious user does manage to bypass the firewall, they will not have access to the intranet. This architecture allows a company to offer services to the internet users while still maintaining security, it is a good architecture for an e-commerce company as it allows them to securely yet efficiently divide their networks.</p>
+
+<p>The most secure and the most expensive option is to implement a screened subnet [3] using 2 firewalls. In this case the DMZ is placed between 2 firewalls which provides an added layer of security. This still allows the company to offer services to the internet users and at the same time protects the company if a malicious user discovers a software-specific exploitable vulnerability. Just incase the malicious user gets past the first firewall due to an exploit the inspection at the second firewall will block the user from entering the secured network.</p>
+
+<p>In computer networks, a DMZ [4] (demilitarised zone) is a physical or logical sub-network that separates an internal local area network from other untrusted networks. Servers for clients, resources and services are located in the DMZ so that users on the internet can use them but the rest of the network (LAN) remains unreachable from the internet.</p>
+
+<p>Hence in conclusion there is no universal topology that all company use and a company should choose a topology that is best suited for their need.</p>
+
+<p>References</p>
+
+<p>[1] http://searchnetworking.techtarget.com/tutorial/Introduction-to-firewalls-Types-of-firewalls</p>
+
+<p>[2] http://www.netsentron.com/forum/how-to-choose-a-firewall/</p>
+
+<p>[3] http://searchsecurity.techtarget.com/tip/Choosing-the-right-firewall-topology-Bastion-host-screened-subnet-or-dual-firewalls</p>
+
+<p>[4] http://searchsecurity.techtarget.com/definition/DMZ-</p>
+</p>
+	</div>
+</section>
+
+</div>
+
+    <!-- Contact -->
+<section id="contact">
+	<div class="inner">
+		<section>
+			<form action="https://formspree.io/prasad.aakash@gmail.com" method="POST">
+				<div class="field half first">
+					<label for="name">Name</label>
+					<input type="text" name="name" id="name" />
+				</div>
+				<div class="field half">
+					<label for="email">Email</label>
+					<input type="text" name="_replyto" id="email" />
+				</div>
+				<div class="field">
+					<label for="message">Message</label>
+					<textarea name="message" id="message" rows="6"></textarea>
+				</div>
+				<ul class="actions">
+					<li><input type="submit" value="Send Message" class="special" /></li>
+					<li><input type="reset" value="Clear" /></li>
+				</ul>
+			</form>
+		</section>
+		<section class="split">
+			<section>
+				<div class="contact-method">
+					<span class="icon alt fa-envelope"></span>
+					<h3>Email</h3>
+					<a href="#">prasad.aakash@gmail.com</a>
+				</div>
+			</section>
+			<section>
+				<div class="contact-method">
+					<span class="icon alt fa-phone"></span>
+					<h3>Phone</h3>
+					<span>Please refer resume</span>
+				</div>
+			</section>
+			<section>
+				<div class="contact-method">
+					<span class="icon alt fa-home"></span>
+					<h3>Address</h3>
+					<span>
+					
+					    360 Huntington Ave<br />
+					
+					
+					    Boston,
+					
+					
+					    MA 
+					
+					
+					    1101<br />
+					
+					
+					    United States of America
+					
+					</span>
+				</div>
+			</section>
+		</section>
+	</div>
+</section>
+
+<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="icons">
+				
+				
+				
+				
+				<li><a href="https://www.instagram.com/aakash_bazinga/" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+				
+				
+				
+				
+				
+				<li><a href="https://github.com/SkySecCoder" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+				
+				
+				
+				<li><a href="https://www.linkedin.com/in/aakash-prasad-590761a4/" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+				
+			</ul>
+			<ul class="copyright">
+				<li>&copy; Aakash Prasad Cybersecurity</li>
+				<!--li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li-->
+				<!--li>Jekyll integration: <a href="http://andrewbanchi.ch" target="_blank">Andrew Banchich</a></li-->
+
+			</ul>
+		</div>
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+	<script src="http://localhost:4000/assets/js/jquery.min.js"></script>
+	<script src="http://localhost:4000/assets/js/jquery.scrolly.min.js"></script>
+	<script src="http://localhost:4000/assets/js/jquery.scrollex.min.js"></script>
+	<script src="http://localhost:4000/assets/js/skel.min.js"></script>
+	<script src="http://localhost:4000/assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="http://localhost:4000/assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="http://localhost:4000/assets/js/main.js"></script>
+
+
+</body>
+
+</html>
