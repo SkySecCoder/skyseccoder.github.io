@@ -6,7 +6,7 @@ title: Meltdown and Spectre
 
 description: Security Flaw 
 
-image: assets/images/pic20.jpg 
+image: assets/images/pic21.jpg 
 
 --- 
 
