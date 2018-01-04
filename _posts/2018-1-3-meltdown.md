@@ -26,25 +26,25 @@ As can be seen, these issues mainly concern entities that rely on cloud infrastr
 
 Following are a few FAQ related to these vulnerabilities. Further details can be found [3] here: [3] 
 
-<b>Am I affected by the bug? </b>
+<b>Am I affected by the bug? </b><br  />
 Most certainly, yes. 
 
-<b>Can I detect if someone has exploited Meltdown or Spectre against me? </b>
+<b>Can I detect if someone has exploited Meltdown or Spectre against me? </b><br  />
 Probably not. The exploitation does not leave any traces in traditional log files. 
 
-<b>Can my antivirus detect or block this attack? </b>
+<b>Can my antivirus detect or block this attack? </b><br  />
 While possible in theory, this is unlikely in practice. Unlike usual malware, Meltdown and Spectre are hard to distinguish from regular benign applications. However, your antivirus may detect malware which uses the attacks by comparing binaries after they become known. 
 
-<b>Is there a workaround/fix? </b>
+<b>Is there a workaround/fix? </b><br  />
 There are patches against Meltdown for Linux ( KPTI (formerly KAISER)), Windows, and OS X. There is also work to harden software against future exploitation of Spectre, respectively to patch software after exploitation through Spectre . 
 
-<b>Which systems are affected by Meltdown? </b>
+<b>Which systems are affected by Meltdown? </b><br  />
 Desktop, Laptop, and Cloud computers may be affected by Meltdown. More technically, every Intel processor which implements out-of-order execution is potentially affected, which is effectively every processor since 1995 (except Intel Itanium and Intel Atom before 2013). At the moment, it is unclear whether ARM and AMD processors are also affected by Meltdown. 
 
-<b>Which systems are affected by Spectre? </b>
+<b>Which systems are affected by Spectre? </b><br  />
 Almost every system is affected by Spectre: Desktops, Laptops, Cloud Servers, as well as Smartphones. More specifically, all modern processors capable of keeping many instructions in flight are potentially vulnerable. In particular, Intel, AMD, and ARM processors. 
 
-<b>Which cloud providers are affected by Meltdown? </b>
+<b>Which cloud providers are affected by Meltdown? </b><br  />
 Cloud providers which use Intel CPUs and Xen PV as virtualization without having patches applied. Furthermore, cloud providers without real hardware virtualization, relying on containers that share one kernel, such as Docker, LXC, or OpenVZ are affected. 
 
 <br  /><b>References</b> 
