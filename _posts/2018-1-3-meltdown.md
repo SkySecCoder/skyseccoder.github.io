@@ -2,13 +2,15 @@
 
 layout: post 
 
-title: Meltdown and Spectre 
+title: What are Meltdown and Spectre?
 
 description: Security Flaw 
 
 image: assets/images/pic21.jpg 
 
 --- 
+
+Meltdown and Spectre are basically hardware bugs that allow programs to steal data which is currently processed on the system.
 
 In order to better understand these flaws we should first understand speculative execution. Speculative execution is basically an optimization technique where a system tries to predict which calculations to perform in order to complete a task. It tries to accomplish this by performing tasks that may or may not be required. Basically it does a work before it is known by the system if it is required for the task. If the work was not required then the system simply reverts the changes, that occurred in order to the work, and simply ignores the results. This is done to attain more concurrency for a task, provided the system has resources to spare. This basically wastes CPU cycles by performing unnecessary work but is able to perform chain of commands much faster when compared to the alternative, which is to perform them one after the other. [1]  
 
