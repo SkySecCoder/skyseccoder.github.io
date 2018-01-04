@@ -50,5 +50,5 @@ Cloud providers which use Intel CPUs and Xen PV as virtualization without having
 <br  /><b>References</b> 
 <br  />[1] Tom McKay and Alex Cranz. "What We Know So Far About Meltdown and Spectre, the Devastating Vulnerabilities in Modern CPUs"; retrieved from https://gizmodo.com/what-we-know-so-far-about-meltdown-and-spectre-the-dev-1821759062 
 <br  />[2] CVE-2017-5754 retrieved from http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754 
-<br  />[3] Meltdown and Spectre. Retrieved from https://meltdownattack.com/#faq-affected 
+<br  />[3] Meltdown and Spectre. Retrieved from https://meltdownattack.com/
 <br  />[4] CVE-2017-5753 retrieved from http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5753 
