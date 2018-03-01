@@ -35,6 +35,6 @@ Multiple SAML systems were identified with this vulnerability and it is recommen
 <b>References</b>
 
 [1] Duo Labs. “Duo Finds SAML Vulnerabilities affecting multiple implementations”; retrieved from https://duo.com/blog/duo-finds-saml-vulnerabilities-affecting-multiple-implementations
-[2] OneLogin. “Dev Overview of SAML”; retrieved from https://developers.onelogin.com/saml
+<br  />[2] OneLogin. “Dev Overview of SAML”; retrieved from https://developers.onelogin.com/saml
 
 
