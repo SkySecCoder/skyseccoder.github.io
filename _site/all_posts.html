@@ -110,7 +110,7 @@ A Distributed Denial of Service (DDoS) attack is an attack that can bring a webs
 <br /><br /><b>What is Memcached?</b><br /><br />
 Memcached is basically a free, open source, high-performance, distributed memory object caching system that can be used to speed up dynamic web applications. Dynamic database-driven websites usually generate small chunks of string data due to database calls, API calls or page rendering. Memcache caches these data and objects to RAM in order to reduce the number of times an external data source must be read.[3]
 <br /><br />In order to carry out the attack, the attacker first implanted a large payload on an exposed memcached server. Then the attacker spoofed his/her IP address, with the victim’s IP address, and generated several “get” request message. Below we can see exactly how the attack was conducted. The servers are sending the request response to the victim because the attacker has spoofed his/her IP so that it appears that the victim had requested a response.[5]</p>
-<p style="text-align:center;"><img src="https://skyseccoder.github.io/images/postAssets/sc2.png" style="width:500px;height:250px;" align="middle" /></p>
+<p style="text-align:center;"><img src="https://skyseccoder.github.io/assets/images/postAssets/sc2.png" style="width:500px;height:250px;" align="middle" /></p>
 <p>The protocol being used was UDP which coupled with Memcached can provide the best protocols to use for an amplification attack. There are no checks (cause of UDP), the data will be delivered to the victim extremely quickly and a tiny request can generate a huge response as can be seen below.[5]</p>
 <pre><code>
 $ sudo tcpdump -ni eth0 port 11211 -t
