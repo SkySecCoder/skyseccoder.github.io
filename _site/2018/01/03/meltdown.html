@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Aakash Prasad</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+	<link rel="icon" type="image/png" href="https://scontent.fbos1-2.fna.fbcdn.net/v/t31.0-8/10317709_640844179384392_171338964060278726_o.jpg?oh=94293d5622b6fa4c4235b4c88d895b23&oe=5A9F9648"/>
+</head>
+
+
+<body>
+
+    <!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header -->
+<header id="header">
+	<a href="http://localhost:4000//" class="logo"><strong>Aakash Prasad</strong> <span>Cybersecurity</span></a>
+	<nav>
+		<a href="#menu">Menu</a>
+	</nav>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+	<ul class="links">
+        
+		    
+		
+		    
+		        <li><a href="http://localhost:4000//">Home</a></li>
+	    	
+		
+		    
+		
+		    
+		
+		
+		    
+		        <li><a href="http://localhost:4000/all_posts.html">All posts</a></li>
+		    
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/landing.html">About me</a></li>
+		    
+		
+		    
+		
+		<!--li><a href="http://localhost:4000/index.html">Home</a></li>
+		<li><a href="http://localhost:4000/landing.html">About me</a></li>
+		<li><a href="/2018/01/03/meltdown.htmlall_posts.html">All posts</a></li>
+		<li><a href="http://localhost:4000/assets/docs/Resume.pdf">Resume</a></li-->
+		<li><a href="http://skyseccoder.github.io/assets/docs/Resume.pdf">Resume</a></li>
+	</ul>
+	<ul class="actions vertical">
+		<li><a href="#contact" class="button special fit">Contact me</a></li>
+		<!--li><a href="#" class="button fit">Log In</a></li-->
+	</ul>
+</nav>
+ 
+    
+    
+<!-- Main -->
+<div id="main" class="alt">
+
+<!-- One -->
+<section id="one">
+	<div class="inner">
+		<header class="major">
+			<h1>What are Meltdown and Spectre?</h1>
+		</header>
+		<span class="image main"><img src="/assets/images/pic21.jpg" alt="" /></span>
+		<p><p>Meltdown and Spectre are basically hardware bugs that allow programs to steal data which is currently processed on the system.</p>
+
+<p>In order to better understand these flaws we should first understand speculative execution. Speculative execution is basically an optimization technique where a system tries to predict which calculations to perform in order to complete a task. It tries to accomplish this by performing tasks that may or may not be required. Basically it does a work before it is known by the system if it is required for the task. If the work was not required then the system simply reverts the changes, that occurred in order to the work, and simply ignores the results. This is done to attain more concurrency for a task, provided the system has resources to spare. This basically wastes CPU cycles by performing unnecessary work but is able to perform chain of commands much faster when compared to the alternative, which is to perform them one after the other. [1]</p>
+
+<p>Although speculative execution is a good thing it does pose an issue for several modern processors including the Intel X86 microprocessors. These processors are hardcoded, for speculative execution, in such a way that they do not check for permissions (of a user, process or application) and can skip commands altogether. Due to this, programs can potentially steal protected information from kernal memory. [1] This kernal memory is generally supposed to be isolated from user programs but in this case (for speculative execution) the program can access information such as passwords or stored files. This is the main principle that both these vulnerabilities utilize.</p>
+
+<p><b>Meltdown Vulnerability</b></p>
+
+<p>Meltdown Vulnerability has a Common Vulnerabilities and Exposures ID of CVE-2017-5754 [2]. It basically breaks the isolation between user applications and the operating system, which allows an attacker to access important memory like passwords. Luckily there are software patches against Meltdown which should be applied immediately. [3]</p>
+
+<p><b>Spectre Vulnerability</b></p>
+
+<p>The Spectre Vulnerability is a composite of 2 issues that have Common Vulnerabilities and Exposures IDs of CVE-2017-5715 and CVE-2017-5753 [4].  Unlike Meltdown, Spectre breaks the isolation between different applications which in essence allows an attacker to trick another program, into leaking information. Oddly enough if the program is error free and follows recommended safety checks, then it is more prone to this vulnerability. My assumption is that the checks simply provide a larger surface area or more opportunities for the malicious program to trick the error-free victim program. [3] This is an extremely hard issue to exploit and fix but it is possible to prevent specific known Spectre exploits through software patches [3].</p>
+
+<p>As can be seen, these issues mainly concern entities that rely on cloud infrastructures or offer cloud services like Amazon or Google and it may or may not affect regular users.</p>
+
+<p>Following are a few FAQ related to these vulnerabilities. Further details can be found [3] here: [3]</p>
+
+<p><b>Am I affected by the bug? </b><br />
+Most certainly, yes.</p>
+
+<p><b>Can I detect if someone has exploited Meltdown or Spectre against me? </b><br />
+Probably not. The exploitation does not leave any traces in traditional log files.</p>
+
+<p><b>Can my antivirus detect or block this attack? </b><br />
+While possible in theory, this is unlikely in practice. Unlike usual malware, Meltdown and Spectre are hard to distinguish from regular benign applications. However, your antivirus may detect malware which uses the attacks by comparing binaries after they become known.</p>
+
+<p><b>Is there a workaround/fix? </b><br />
+There are patches against Meltdown for Linux ( KPTI (formerly KAISER)), Windows, and OS X. There is also work to harden software against future exploitation of Spectre, respectively to patch software after exploitation through Spectre .</p>
+
+<p><b>Which systems are affected by Meltdown? </b><br />
+Desktop, Laptop, and Cloud computers may be affected by Meltdown. More technically, every Intel processor which implements out-of-order execution is potentially affected, which is effectively every processor since 1995 (except Intel Itanium and Intel Atom before 2013). At the moment, it is unclear whether ARM and AMD processors are also affected by Meltdown.</p>
+
+<p><b>Which systems are affected by Spectre? </b><br />
+Almost every system is affected by Spectre: Desktops, Laptops, Cloud Servers, as well as Smartphones. More specifically, all modern processors capable of keeping many instructions in flight are potentially vulnerable. In particular, Intel, AMD, and ARM processors.</p>
+
+<p><b>Which cloud providers are affected by Meltdown? </b><br />
+Cloud providers which use Intel CPUs and Xen PV as virtualization without having patches applied. Furthermore, cloud providers without real hardware virtualization, relying on containers that share one kernel, such as Docker, LXC, or OpenVZ are affected.</p>
+
+<p><br /><b>References</b> 
+<br />[1] Tom McKay and Alex Cranz. “What We Know So Far About Meltdown and Spectre, the Devastating Vulnerabilities in Modern CPUs”; retrieved from https://gizmodo.com/what-we-know-so-far-about-meltdown-and-spectre-the-dev-1821759062 
+<br />[2] CVE-2017-5754 retrieved from http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754 
+<br />[3] Meltdown and Spectre. Retrieved from https://meltdownattack.com/
+<br />[4] CVE-2017-5753 retrieved from http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5753</p>
+</p>
+	</div>
+</section>
+
+</div>
+
+    <!-- Contact -->
+<section id="contact">
+	<div class="inner">
+		<section>
+			<form action="https://formspree.io/prasad.aakash@gmail.com" method="POST">
+				<div class="field half first">
+					<label for="name">Name</label>
+					<input type="text" name="name" id="name" />
+				</div>
+				<div class="field half">
+					<label for="email">Email</label>
+					<input type="text" name="_replyto" id="email" />
+				</div>
+				<div class="field">
+					<label for="message">Message</label>
+					<textarea name="message" id="message" rows="6"></textarea>
+				</div>
+				<ul class="actions">
+					<li><input type="submit" value="Send Message" class="special" /></li>
+					<li><input type="reset" value="Clear" /></li>
+				</ul>
+			</form>
+		</section>
+		<section class="split">
+			<section>
+				<div class="contact-method">
+					<span class="icon alt fa-envelope"></span>
+					<h3>Email</h3>
+					<a href="#">prasad.aakash@gmail.com</a>
+				</div>
+			</section>
+			<section>
+				<div class="contact-method">
+					<span class="icon alt fa-phone"></span>
+					<h3>Phone</h3>
+					<span>Please refer resume</span>
+				</div>
+			</section>
+			<section>
+				<div class="contact-method">
+					<span class="icon alt fa-home"></span>
+					<h3>Address</h3>
+					<span>
+					
+					    360 Huntington Ave<br />
+					
+					
+					    Boston,
+					
+					
+					    MA 
+					
+					
+					    1101<br />
+					
+					
+					    United States of America
+					
+					</span>
+				</div>
+			</section>
+		</section>
+	</div>
+</section>
+
+<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="icons">
+				
+				
+				
+				
+				<li><a href="https://www.instagram.com/aakash_bazinga/" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+				
+				
+				
+				
+				
+				<li><a href="https://github.com/SkySecCoder" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+				
+				
+				
+				<li><a href="https://www.linkedin.com/in/aakash-prasad-590761a4/" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+				
+			</ul>
+			<ul class="copyright">
+				<li>&copy; Aakash Prasad Cybersecurity</li>
+				<!--li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li-->
+				<!--li>Jekyll integration: <a href="http://andrewbanchi.ch" target="_blank">Andrew Banchich</a></li-->
+
+			</ul>
+		</div>
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+	<script src="http://localhost:4000/assets/js/jquery.min.js"></script>
+	<script src="http://localhost:4000/assets/js/jquery.scrolly.min.js"></script>
+	<script src="http://localhost:4000/assets/js/jquery.scrollex.min.js"></script>
+	<script src="http://localhost:4000/assets/js/skel.min.js"></script>
+	<script src="http://localhost:4000/assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="http://localhost:4000/assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="http://localhost:4000/assets/js/main.js"></script>
+
+
+</body>
+
+</html>

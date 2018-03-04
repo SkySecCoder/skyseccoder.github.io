@@ -97,6 +97,166 @@
 	<!--<div class="inner">
                 
 		<header class="major">
+			<h2>GitHub survives the biggest DDoS attack ever</h2> 
+		</header>
+		<span class="image main"><img src="/assets/images/pic24.jpg" alt="" /></span>
+		<p>2018-03-03 00:00:00 -0500</p>
+		<p><p>On Feb 28th, GitHub was a victim to one the largest DDoS amplification attack ever recorded. This attack was so great that it was able to take a company like GitHub offline for approximately 10 minutes during which it was completely offline between 17:21 and 17:26 UTC, and had intermittent connectivity between 17:26 and 17:30 UTC [1].
+<br /><br />The company servers were barraged with 1.35 terabits per second of traffic, but thankfully GitHub contacted Akamain Prolexic in time which took over as an intermediary, and routed all ingress and egress traffic through it’s scrubbing centres to block malicious traffic. [2] Below we can see the network traffic when the attack was taking place. The sudden spike in network traffic is extremely remarkable and scary at the same time.</p>
+<p style="text-align:center;"><img src="https://skyseccoder.github.io/assets/images/postAssets/sc1.png" style="width:500px;height:250px;" align="middle" /></p>
+<p>So how did a company like GitHub get attacked by such an amplification attack. Let us first define a few things before we proceed any further.
+<br /><br /><b>What is a DDoS attack?</b><br /><br />
+A Distributed Denial of Service (DDoS) attack is an attack that can bring a website/server/service offline by flooding the victim with traffic from multiple sources. This can be done by using several infected system, who generate traffic to the victim website/server/service, or simply be legitimate traffic that the victim is not prepared to handle. [4]
+<br /><br /><b>What is Memcached?</b><br /><br />
+Memcached is basically a free, open source, high-performance, distributed memory object caching system that can be used to speed up dynamic web applications. Dynamic database-driven websites usually generate small chunks of string data due to database calls, API calls or page rendering. Memcache caches these data and objects to RAM in order to reduce the number of times an external data source must be read.[3]
+<br /><br />In order to carry out the attack, the attacker first implanted a large payload on an exposed memcached server. Then the attacker spoofed his/her IP address, with the victim’s IP address, and generated several “get” request message. Below we can see exactly how the attack was conducted. The servers are sending the request response to the victim because the attacker has spoofed his/her IP so that it appears that the victim had requested a response.[5]</p>
+<p style="text-align:center;"><img src="https://skyseccoder.github.io/images/postAssets/sc2.png" style="width:500px;height:250px;" align="middle" /></p>
+<p>The protocol being used was UDP which coupled with Memcached can provide the best protocols to use for an amplification attack. There are no checks (cause of UDP), the data will be delivered to the victim extremely quickly and a tiny request can generate a huge response as can be seen below.[5]</p>
+<pre><code>
+$ sudo tcpdump -ni eth0 port 11211 -t
+<br />IP 172.16.170.135.39396 &gt; 192.168.2.1.11211: UDP, length 15
+<br />IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
+<br />IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
+<br />...(repeated hundreds times)...
+</code></pre>
+<p><b>How to Fix this?</b><br /><br />
+If your servers are using Memcached then you should make sure that you have disabled UDP support. By default memcached listens on INADDR_ANY and the UDP support is ENABLED. You can check if your server is vulnerable if you run the command below and you receive non-empty responses, as seen below.</p>
+<pre><code>
+$ echo -en "\x00\x00\x00\x00\x00\x01\x00\x00stats\r\n" | nc -q1 -u 127.0.0.1 11211
+STAT pid 21357
+STAT uptime 41557034
+STAT time 1519734962
+...
+</code></pre>
+
+<p><br /><b>Reference</b>
+<br />[1] Jon Russell. “The world’s largest DDoS attack took GitHub offline for fewer than 10 minutes”;retrieved from https://techcrunch.com/2018/03/02/the-worlds-largest-ddos-attack-took-github-offline-for-less-than-tens-minutes/
+<br />[2] Lily Hay Newman. “GITHUB SURVIVED THE BIGGEST DDOS ATTACK EVER RECORDED”; retrieved from https://www.wired.com/story/github-ddos-memcached/
+<br />[3] What is Memcached; retrieved from https://www.memcached.org
+<br />[4] Digital Attack Map. “Digital Attack Map”; retrieved from https://www.digitalattackmap.com/understanding-ddos/
+<br />[5] Marek Majkowski. “Memcrashed - Major amplification attacks from UDP port 11211”;retrieved from https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211/</p>
+</p>
+                
+		<header class="major">
+			<h2>SAML Implementation Vulnerability</h2> 
+		</header>
+		<span class="image main"><img src="/assets/images/pic23.jpg" alt="" /></span>
+		<p>2018-02-27 00:00:00 -0500</p>
+		<p><p>A new vulnerability class has been discovered that affects several SAML-based single sign-on(SSO) systems. This particular vulnerability can allow an attacker with authenticated access, to an existing SAML system, to trick SAML systems into authenticating as a different user. By using this vulnerability the attacker does not need to know the victim’s password and can still gain access to all the resources that are assigned to the victim via the SSO.[1]</p>
+
+<p>So what is SAML SSO?</p>
+
+<p>SAML(Security assertion markup language) SSO basically helps users to login to various applications by first authenticating themselves to one identity provider. This identity provider then authenticates the user to several applications that are required by the user. [2] In conclusion the user has to remember one password in order to authenticate to the identity provider, instead of remembering several passwords for each and every application. (P.S. you should never have same passwords for all your applications :P) After the identity provider has authenticated the user a SAML response signature is generated which is sent to the service provider. If the signature is valid then an ID field within the response will help identify and authenticate the specified user.</p>
+
+<p>This vulnerability basically allows a malicious person to manipulate the SAML response, more specifically the response’s “NameID”, that is provided by the Identity Provider and then gain access to services that the victim user had. [1] This vulnerability uses an unexpected behaviour of XML libraries like Python’s lxml or Ruby’s REXML, which do not take comments into considerations while parsing the “NameID”(or any identifier tag specific to an identity provider) of SAML responses. Due to this unexpected extraction an attacker can pose as another user if his/her original SAML response is similar to another user’s SAML response. More detail regarding this XML extraction can be found here [1]</p>
+
+<p>This process is somewhat similar to getting someone else’s passport, replacing your picture with the original owner’s picture and then travelling to the original user’s country as a citizen :P</p>
+
+<p>This manipulation basically relies on how the identity provider and the service provider implement the SAML responses and various XML APIs for python, ruby, etc.. If the implementation of the NameID(or any identifier tag specific to an identity provider) in the responses are favourable for the vulnerability then the malicious actor can do some modifications to his/her SAML response NameID due to which the signature would not be affected, and the actor will gain the victim’s access to resources.[1]</p>
+
+<p>One use case could be a malicious contractor who was given an SSO, which limited his/her resources. Now the contractor can change his SAML response NameID so that he/she could get the resources of another user in the company who has more resources. The contractor would not even require the password for the victim employee’s SSO.</p>
+
+<p>Multiple SAML systems were identified with this vulnerability and it is recommended that you update them if an appropriate upgrade has been released:</p>
+<ul>
+  <li>OneLogin - python-saml - CVE-2017-11427</li>
+  <li>OneLogin - ruby-saml - CVE-2017-11428</li>
+  <li>Clever - saml2-js - CVE-2017-11429</li>
+  <li>OmniAuth- saml - CVE-2017-11430</li>
+  <li>Shibboleth - CVE-2018-0489</li>
+  <li>Duo Network Gateway - CVE-2018-7340</li>
+</ul>
+
+<p><b>References</b></p>
+
+<p>[1] Duo Labs. “Duo Finds SAML Vulnerabilities affecting multiple implementations”; retrieved from https://duo.com/blog/duo-finds-saml-vulnerabilities-affecting-multiple-implementations
+<br />[2] OneLogin. “Dev Overview of SAML”; retrieved from https://developers.onelogin.com/saml</p>
+
+</p>
+                
+		<header class="major">
+			<h2>Cisco WebVPN Vulnerability with a CVSS score of 10.0</h2> 
+		</header>
+		<span class="image main"><img src="/assets/images/pic22.jpg" alt="" /></span>
+		<p>2018-01-30 00:00:00 -0500</p>
+		<p><p>On Jan 29th 2018, Cisco released a new vulnerability regarding their Adaptive Security Appliance(ASA). This vulnerability can be exploited provided the WebVPN feature is enabled on the ASA device. 
+In my opinion no security issue, doesn’t matter how big or small, must be ignored but if the flaw has a <b>CVSS score of 10.0</b> then it certainly catches the attention of hackers and administrators all around the globe.
+<br /><br />The vulnerability itself allows an unauthenticated attacker to remotely execute code and reload the affected system. This reload prevents the regular user to access resources hence this acts as a Denial of Service (DOS) attack. [1]
+<br /><br />Let us first look at WebVPN and then see what actually causes this issue.
+<br /><br />So WebVPN, like a normal VPN, allows a user to access resources on another network securely. It does this by using a normal browser instead of using an extra software or hardware client[2]. This is extremely useful as a user can use any computer on the internet, and not be restricted by software or hardware. WebVPN uses SSL and TLS1 for encryption and uses an ASA to recognise connections that need to be proxied and authenticated appropriately by an authentication subsystem.[2]
+<br /><br />In order to exploit the WebVPN issue an attacker will have to send multiple crafted XML packets to a WebVPN configured interface of the ASA. This will basically cause an attempt to double free a region of memory on the ASA device. To make matters worse, since WebVPN does not utilise any software, hardware or certificates, there is no way that the client system can be authenticated. This potentially allows an attacker to conduct the attack from anywhere that has access to the internet. [2]
+<br /><br />If this is successfully attempted then the attacker can have unrestricted access to the protected network where he/she is free to execute any code on the network. This also paves the way to utilise several known attack vectors to conduct attacks. Also, yes there is an also, Cisco has released some software updates that address this, but there are no workarounds for this vulnerability.
+<br /><br />If you utilise the following ASA products then you should apply the appropriate patches as and when CISCO releases them: [1]</p>
+<ul>
+  <li>3000 Series Industrial Security Appliance (ISA)</li>
+  <li>ASA 5500 Series Adaptive Security Appliances</li>
+  <li>ASA 5500-X Series Next-Generation Firewalls</li>
+  <li>ASA Services Module for Cisco Catalyst 6500 Series Switches and Cisco 7600 Series Routers</li>
+  <li>ASA 1000V Cloud Firewall</li>
+  <li>Adaptive Security Virtual Appliance (ASAv)</li>
+  <li>Firepower 2100 Series Security Appliance</li>
+  <li>Firepower 4110 Security Appliance</li>
+  <li>Firepower 9300 ASA Security Module</li>
+  <li>Firepower Threat Defense Software (FTD)
+<br /><br />It should be noted that this issue affects vulnerable releases of Cisco ASA software where WebVPN is enabled. Also an SSL and DTLS listen socket must be present on the TCP port 443(port for HTTPS). If your ASA is running a version prior to 9., 9.3 or 9.5 then Cisco recommends a version update. Full details on how to check if you are affected can be found here by following the link in reference [1].</li>
+</ul>
+
+<p><br /><b>References</b>
+<br /><br />[1] Cisco Security Advisory. “Cisco Adaptive Security Appliance Remote Code Execution and Denial of Service Vulnerability”; retrieved from https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180129-asa1
+<br />[2] Cisco. “Cisco Security Appliance Command Line Configuration Guide, Version 7.2”; retrieved from https://www.cisco.com/c/en/us/td/docs/security/asa/asa72/configuration/guide/conf_gd/webvpn.html#wp1030670</p>
+</p>
+                
+		<header class="major">
+			<h2>What are Meltdown and Spectre?</h2> 
+		</header>
+		<span class="image main"><img src="/assets/images/pic21.jpg" alt="" /></span>
+		<p>2018-01-03 00:00:00 -0500</p>
+		<p><p>Meltdown and Spectre are basically hardware bugs that allow programs to steal data which is currently processed on the system.</p>
+
+<p>In order to better understand these flaws we should first understand speculative execution. Speculative execution is basically an optimization technique where a system tries to predict which calculations to perform in order to complete a task. It tries to accomplish this by performing tasks that may or may not be required. Basically it does a work before it is known by the system if it is required for the task. If the work was not required then the system simply reverts the changes, that occurred in order to the work, and simply ignores the results. This is done to attain more concurrency for a task, provided the system has resources to spare. This basically wastes CPU cycles by performing unnecessary work but is able to perform chain of commands much faster when compared to the alternative, which is to perform them one after the other. [1]</p>
+
+<p>Although speculative execution is a good thing it does pose an issue for several modern processors including the Intel X86 microprocessors. These processors are hardcoded, for speculative execution, in such a way that they do not check for permissions (of a user, process or application) and can skip commands altogether. Due to this, programs can potentially steal protected information from kernal memory. [1] This kernal memory is generally supposed to be isolated from user programs but in this case (for speculative execution) the program can access information such as passwords or stored files. This is the main principle that both these vulnerabilities utilize.</p>
+
+<p><b>Meltdown Vulnerability</b></p>
+
+<p>Meltdown Vulnerability has a Common Vulnerabilities and Exposures ID of CVE-2017-5754 [2]. It basically breaks the isolation between user applications and the operating system, which allows an attacker to access important memory like passwords. Luckily there are software patches against Meltdown which should be applied immediately. [3]</p>
+
+<p><b>Spectre Vulnerability</b></p>
+
+<p>The Spectre Vulnerability is a composite of 2 issues that have Common Vulnerabilities and Exposures IDs of CVE-2017-5715 and CVE-2017-5753 [4].  Unlike Meltdown, Spectre breaks the isolation between different applications which in essence allows an attacker to trick another program, into leaking information. Oddly enough if the program is error free and follows recommended safety checks, then it is more prone to this vulnerability. My assumption is that the checks simply provide a larger surface area or more opportunities for the malicious program to trick the error-free victim program. [3] This is an extremely hard issue to exploit and fix but it is possible to prevent specific known Spectre exploits through software patches [3].</p>
+
+<p>As can be seen, these issues mainly concern entities that rely on cloud infrastructures or offer cloud services like Amazon or Google and it may or may not affect regular users.</p>
+
+<p>Following are a few FAQ related to these vulnerabilities. Further details can be found [3] here: [3]</p>
+
+<p><b>Am I affected by the bug? </b><br />
+Most certainly, yes.</p>
+
+<p><b>Can I detect if someone has exploited Meltdown or Spectre against me? </b><br />
+Probably not. The exploitation does not leave any traces in traditional log files.</p>
+
+<p><b>Can my antivirus detect or block this attack? </b><br />
+While possible in theory, this is unlikely in practice. Unlike usual malware, Meltdown and Spectre are hard to distinguish from regular benign applications. However, your antivirus may detect malware which uses the attacks by comparing binaries after they become known.</p>
+
+<p><b>Is there a workaround/fix? </b><br />
+There are patches against Meltdown for Linux ( KPTI (formerly KAISER)), Windows, and OS X. There is also work to harden software against future exploitation of Spectre, respectively to patch software after exploitation through Spectre .</p>
+
+<p><b>Which systems are affected by Meltdown? </b><br />
+Desktop, Laptop, and Cloud computers may be affected by Meltdown. More technically, every Intel processor which implements out-of-order execution is potentially affected, which is effectively every processor since 1995 (except Intel Itanium and Intel Atom before 2013). At the moment, it is unclear whether ARM and AMD processors are also affected by Meltdown.</p>
+
+<p><b>Which systems are affected by Spectre? </b><br />
+Almost every system is affected by Spectre: Desktops, Laptops, Cloud Servers, as well as Smartphones. More specifically, all modern processors capable of keeping many instructions in flight are potentially vulnerable. In particular, Intel, AMD, and ARM processors.</p>
+
+<p><b>Which cloud providers are affected by Meltdown? </b><br />
+Cloud providers which use Intel CPUs and Xen PV as virtualization without having patches applied. Furthermore, cloud providers without real hardware virtualization, relying on containers that share one kernel, such as Docker, LXC, or OpenVZ are affected.</p>
+
+<p><br /><b>References</b> 
+<br />[1] Tom McKay and Alex Cranz. “What We Know So Far About Meltdown and Spectre, the Devastating Vulnerabilities in Modern CPUs”; retrieved from https://gizmodo.com/what-we-know-so-far-about-meltdown-and-spectre-the-dev-1821759062 
+<br />[2] CVE-2017-5754 retrieved from http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754 
+<br />[3] Meltdown and Spectre. Retrieved from https://meltdownattack.com/
+<br />[4] CVE-2017-5753 retrieved from http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5753</p>
+</p>
+                
+		<header class="major">
 			<h2>Architectures for deploying a firewall in a company</h2> 
 		</header>
 		<span class="image main"><img src="/assets/images/pic19.jpg" alt="" /></span>
@@ -254,32 +414,10 @@ In summary an IDS simply detects a suspicious activity on a network and reports 
 </p>
                 
 		<header class="major">
-			<h2>Under Construction</h2> 
-		</header>
-		<span class="image main"><img src="/assets/images/underconstruction.jpg" alt="" /></span>
-		<p>2017-09-10 00:00:00 -0400</p>
-		<p><p>Donec ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
-Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. 
-Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. 
-Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. 
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. 
-Nullam venenatis erat id vehicula viverra. Nunc eros ut ultricies condimentum. 
-Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. 
-Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-
-<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
-Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. 
-Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-</p>
-                
-		<header class="major">
 			<h2>Replacement of damaged asset vs repairing damaged asset</h2> 
 		</header>
 		<span class="image main"><img src="/assets/images/pic17.jpg" alt="" /></span>
-		<p>2017-09-09 00:00:00 -0400</p>
+		<p>2017-09-10 00:00:00 -0400</p>
 		<p><p>Companies deal with information loss or damage, almost on a regular basis. The main question rises what to do next after the damage has been done. Companies try to find ways to minimise their damages and costs by appropriately taking measures to do so, they can choose to completely replace their damaged/lost information assets, leave the damaged asset as is or they can choose to repair the damage done to the asset. In order to make the most suitable decision the company has to estimate the value of the asset and cost for handling the damage. Various assessments methods for evaluating the worth of the asset are:</p>
 
 <p>-Replacement cost</p>
@@ -311,6 +449,28 @@ Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
 <p>[1] - retrieved from http://searchsecurity.techtarget.com/answer/How-to-determine-the-net-value-of-an-asset-for-risk-impact-analysis</p>
 </p>
                 
+		<header class="major">
+			<h2>Under Construction</h2> 
+		</header>
+		<span class="image main"><img src="/assets/images/underconstruction.jpg" alt="" /></span>
+		<p>2017-09-09 00:00:00 -0400</p>
+		<p><p>Donec ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. 
+Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. 
+Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. 
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. 
+Nullam venenatis erat id vehicula viverra. Nunc eros ut ultricies condimentum. 
+Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. 
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. 
+Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+
+<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. 
+Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+</p>
+                
 	</div>-->
 	<!--Mine-->
 	<div class="table-wrapper">
@@ -322,6 +482,26 @@ Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
 			</tr>
 		</thead>
 		<tbody>
+			
+			<tr>
+				<td ><a href="/2018/03/03/GH-attack.html" class="link">GitHub survives the biggest DDoS attack ever</a></td>
+				<td>2018-03-03 00:00:00 -0500</td>
+			</tr>
+			
+			<tr>
+				<td ><a href="/2018/02/27/SAML-issue.html" class="link">SAML Implementation Vulnerability</a></td>
+				<td>2018-02-27 00:00:00 -0500</td>
+			</tr>
+			
+			<tr>
+				<td ><a href="/2018/01/30/cisco-vpn.html" class="link">Cisco WebVPN Vulnerability with a CVSS score of 10.0</a></td>
+				<td>2018-01-30 00:00:00 -0500</td>
+			</tr>
+			
+			<tr>
+				<td ><a href="/2018/01/03/meltdown.html" class="link">What are Meltdown and Spectre?</a></td>
+				<td>2018-01-03 00:00:00 -0500</td>
+			</tr>
 			
 			<tr>
 				<td ><a href="/2018/01/01/firewall.html" class="link">Architectures for deploying a firewall in a company</a></td>
@@ -349,12 +529,12 @@ Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
 			</tr>
 			
 			<tr>
-				<td ><a href="/2017/09/10/consequat.html" class="link">Under Construction</a></td>
+				<td ><a href="/2017/09/10/etiam.html" class="link">Replacement of damaged asset vs repairing damaged asset</a></td>
 				<td>2017-09-10 00:00:00 -0400</td>
 			</tr>
 			
 			<tr>
-				<td ><a href="/2017/09/09/etiam.html" class="link">Replacement of damaged asset vs repairing damaged asset</a></td>
+				<td ><a href="/2017/09/09/consequat.html" class="link">Under Construction</a></td>
 				<td>2017-09-09 00:00:00 -0400</td>
 			</tr>
 			

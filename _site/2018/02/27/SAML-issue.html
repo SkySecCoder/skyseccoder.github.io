@@ -17,11 +17,6 @@
 	<link rel="icon" type="image/png" href="https://scontent.fbos1-2.fna.fbcdn.net/v/t31.0-8/10317709_640844179384392_171338964060278726_o.jpg?oh=94293d5622b6fa4c4235b4c88d895b23&oe=5A9F9648"/>
 </head>
 
-<style>
-img {
-  border-radius: 50%;
-}
-</style>
 
 <body>
 
@@ -29,7 +24,7 @@ img {
 <div id="wrapper">
 
 <!-- Header -->
-<header id="header" class="alt">
+<header id="header">
 	<a href="http://localhost:4000//" class="logo"><strong>Aakash Prasad</strong> <span>Cybersecurity</span></a>
 	<nav>
 		<a href="#menu">Menu</a>
@@ -65,7 +60,7 @@ img {
 		
 		<!--li><a href="http://localhost:4000/index.html">Home</a></li>
 		<li><a href="http://localhost:4000/landing.html">About me</a></li>
-		<li><a href="/all_posts.html">All posts</a></li>
+		<li><a href="/2018/02/27/SAML-issue.htmlall_posts.html">All posts</a></li>
 		<li><a href="http://localhost:4000/assets/docs/Resume.pdf">Resume</a></li-->
 		<li><a href="http://skyseccoder.github.io/assets/docs/Resume.pdf">Resume</a></li>
 	</ul>
@@ -74,139 +69,53 @@ img {
 		<!--li><a href="#" class="button fit">Log In</a></li-->
 	</ul>
 </nav>
+ 
+    
+    
+<!-- Main -->
+<div id="main" class="alt">
 
+<!-- One -->
+<section id="one">
+	<div class="inner">
+		<header class="major">
+			<h1>SAML Implementation Vulnerability</h1>
+		</header>
+		<span class="image main"><img src="/assets/images/pic23.jpg" alt="" /></span>
+		<p><p>A new vulnerability class has been discovered that affects several SAML-based single sign-on(SSO) systems. This particular vulnerability can allow an attacker with authenticated access, to an existing SAML system, to trick SAML systems into authenticating as a different user. By using this vulnerability the attacker does not need to know the victim’s password and can still gain access to all the resources that are assigned to the victim via the SSO.[1]</p>
 
-    <!-- Banner -->
-    <section id="banner" class="major">
-        <div class="inner">
-            <header class="major">
-                <img src="https://scontent.fbos1-2.fna.fbcdn.net/v/t31.0-8/10317709_640844179384392_171338964060278726_o.jpg?oh=94293d5622b6fa4c4235b4c88d895b23&oe=5A9F9648" alt="Aakash Prasad" style="width:150px">
-                <h1>Welcome to my website</h1>
-            </header>
-            <div class="content">
-                <!--p style="text-transform: uppercase;">Hello my name is Aakash Prasad.<br />To know more about me, click here.</p-->
-                <ul class="actions">
-                    <li><p style="text-transform: uppercase;">Hello my name is Aakash Prasad.<br />To know more about me, click here.</p></li>
-                    <li><a href="/landing.html" class="button next scrolly">Get Started</a></li>
-                    <li></li>
-                </ul>
-            </div>
-        </div>
-    </section>
+<p>So what is SAML SSO?</p>
 
-    <!-- Main -->
-    <div id="main">
+<p>SAML(Security assertion markup language) SSO basically helps users to login to various applications by first authenticating themselves to one identity provider. This identity provider then authenticates the user to several applications that are required by the user. [2] In conclusion the user has to remember one password in order to authenticate to the identity provider, instead of remembering several passwords for each and every application. (P.S. you should never have same passwords for all your applications :P) After the identity provider has authenticated the user a SAML response signature is generated which is sent to the service provider. If the signature is valid then an ID field within the response will help identify and authenticate the specified user.</p>
 
-        <!-- One -->
-        <section id="one" class="tiles">
-	
-	
-        <article>
-                <span class="image">
-                        <img src="assets/images/pic24.jpg" alt="" />
-                </span>
-                <header class="major">
-                        <h3><a href="/2018/03/03/GH-attack.html" class="link">GitHub survives the biggest DDoS attack ever</a></h3>
-                        <p>Attacks</p>
-                </header>
-        </article>
-	
-	
-	
-        <article>
-                <span class="image">
-                        <img src="assets/images/pic23.jpg" alt="" />
-                </span>
-                <header class="major">
-                        <h3><a href="/2018/02/27/SAML-issue.html" class="link">SAML Implementation Vulnerability</a></h3>
-                        <p>Security Flaw</p>
-                </header>
-        </article>
-	
-	
-	
-        <article>
-                <span class="image">
-                        <img src="assets/images/pic22.jpg" alt="" />
-                </span>
-                <header class="major">
-                        <h3><a href="/2018/01/30/cisco-vpn.html" class="link">Cisco WebVPN Vulnerability with a CVSS score of 10.0</a></h3>
-                        <p>Security Flaw</p>
-                </header>
-        </article>
-	
-	
-	
-        <article>
-                <span class="image">
-                        <img src="assets/images/pic21.jpg" alt="" />
-                </span>
-                <header class="major">
-                        <h3><a href="/2018/01/03/meltdown.html" class="link">What are Meltdown and Spectre?</a></h3>
-                        <p>Security Flaw</p>
-                </header>
-        </article>
-	
-	
-	
-        <article>
-                <span class="image">
-                        <img src="assets/images/pic19.jpg" alt="" />
-                </span>
-                <header class="major">
-                        <h3><a href="/2018/01/01/firewall.html" class="link">Architectures for deploying a firewall in a company</a></h3>
-                        <p>General security</p>
-                </header>
-        </article>
-	
-	
-	
-        <article>
-                <span class="image">
-                        <img src="assets/images/pic12.jpg" alt="" />
-                </span>
-                <header class="major">
-                        <h3><a href="/2017/09/15/aliquam.html" class="link">Difference between Information Security and Computer Security</a></h3>
-                        <p>General security</p>
-                </header>
-        </article>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-</section>
+<p>This vulnerability basically allows a malicious person to manipulate the SAML response, more specifically the response’s “NameID”, that is provided by the Identity Provider and then gain access to services that the victim user had. [1] This vulnerability uses an unexpected behaviour of XML libraries like Python’s lxml or Ruby’s REXML, which do not take comments into considerations while parsing the “NameID”(or any identifier tag specific to an identity provider) of SAML responses. Due to this unexpected extraction an attacker can pose as another user if his/her original SAML response is similar to another user’s SAML response. More detail regarding this XML extraction can be found here [1]</p>
 
+<p>This process is somewhat similar to getting someone else’s passport, replacing your picture with the original owner’s picture and then travelling to the original user’s country as a citizen :P</p>
 
-        <!-- Two -->
-        <section id="two">
-            <div class="inner">
-                <header class="major">
-                    <!--h2>About</h2-->
-                    <h2>Philosophy</h2>
-                </header>
-                <blockquote>
-                    <p><!--Hello, my name is <b>Aakash Prasad</b> and this is my website. I am graduate student at Northeastern University where I am currently persuing my Masters in Information Assurance and Cybersecurity.
+<p>This manipulation basically relies on how the identity provider and the service provider implement the SAML responses and various XML APIs for python, ruby, etc.. If the implementation of the NameID(or any identifier tag specific to an identity provider) in the responses are favourable for the vulnerability then the malicious actor can do some modifications to his/her SAML response NameID due to which the signature would not be affected, and the actor will gain the victim’s access to resources.[1]</p>
 
-I have to edit a lot of stuff.
--->
-<p><i>“Security is like a diamond, you can hammer away at the hardest part and hope that it will crack, <br />or you can find a weak point and guarantee your victory”<br /><br /> ~ by Aakash Prasad</i></p>
+<p>One use case could be a malicious contractor who was given an SSO, which limited his/her resources. Now the contractor can change his SAML response NameID so that he/she could get the resources of another user in the company who has more resources. The contractor would not even require the password for the victim employee’s SSO.</p>
+
+<p>Multiple SAML systems were identified with this vulnerability and it is recommended that you update them if an appropriate upgrade has been released:</p>
+<ul>
+  <li>OneLogin - python-saml - CVE-2017-11427</li>
+  <li>OneLogin - ruby-saml - CVE-2017-11428</li>
+  <li>Clever - saml2-js - CVE-2017-11429</li>
+  <li>OmniAuth- saml - CVE-2017-11430</li>
+  <li>Shibboleth - CVE-2018-0489</li>
+  <li>Duo Network Gateway - CVE-2018-7340</li>
+</ul>
+
+<p><b>References</b></p>
+
+<p>[1] Duo Labs. “Duo Finds SAML Vulnerabilities affecting multiple implementations”; retrieved from https://duo.com/blog/duo-finds-saml-vulnerabilities-affecting-multiple-implementations
+<br />[2] OneLogin. “Dev Overview of SAML”; retrieved from https://developers.onelogin.com/saml</p>
 
 </p>
-                </blockquote>
-                <!--ul class="actions">
-                    <li><a href="landing.html" class="button next">Get Started</a></li>
-                </ul-->
-            </div>
-        </section>
+	</div>
+</section>
 
-    </div>
+</div>
 
     <!-- Contact -->
 <section id="contact">
