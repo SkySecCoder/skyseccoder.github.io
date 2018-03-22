@@ -15,7 +15,7 @@ nav-menu: true
 		<header class="major">
 			<h2>Profile</h2>
 		</header>
-		<p>I am pursuing a degree in Master of Science in Information Assurance and Cybersecurity from Northeastern University, Boston, and my GPA is 3.7. I am currently working as a teaching assistant for the course Foundation of Information Assurance, here at Northeastern University. I have completed a Bachelor of Technology in Information Technology from the Vellore Institute of technology, India. I have completed three internships during the course of my Bachelors at Clinchpad Technologies, Polaris Consulting and Services ltd.and Hindustan Computers limited. I have worked in various positions in these companies that range from software testing to software development.</p>
+		<p>I am pursuing a degree in Master of Science in Information Assurance and Cybersecurity from Northeastern University, Boston, and my GPA is 3.66. I am currently working as an Information Security Analyst at Brightcove. I have completed a Bachelor of Technology in Information Technology from the Vellore Institute of technology, India. I have completed three internships during the course of my Bachelors at Clinchpad Technologies, Polaris Consulting and Services ltd.and Hindustan Computers limited. I have worked in various positions in these companies that range from software testing to software development.</p>
 	</div>
 </section>
 
@@ -49,7 +49,7 @@ nav-menu: true
 				<header class="major">
 					<h3>Skills</h3>
 				</header>
-				<p><b>Language:</b>C, C++, Java, JavaScript (Node JS), HTML, Swift, Objective C, Python, High Level Assembly 
+				<p><b>Language:</b>C, C++, Java, JavaScript (Node JS), HTML, Swift, Objective C, Python, High Level Assembly, Terraform 
 				<br  /><br  /><b>Operating System:</b>Mac OS, Windows 7-10, Kali Linux, CentOS, Ubuntu 
 				<br  /><br  /><b>Tools:</b>Wireshark, FileZilla, NetWitness Investigator, Aircrack-ng, OpenVAS,
 				<br  />Splunk, Suricata, Metasploit, FTK Imager, ProDiscover, SANS SIFT, Sleuth Kit,
