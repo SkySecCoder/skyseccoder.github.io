@@ -1,6 +1,6 @@
 ---
 layout: post
-title: What is the differnce between Privacy and Confidentiality?
+title: What is the difference between Privacy and Confidentiality?
 description: General security
 image: assets/images/pic26.jpg
 ---
